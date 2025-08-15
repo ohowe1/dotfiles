@@ -72,16 +72,17 @@ plugins=(git macos pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
+# fnm
+FNM_PATH="/opt/homebrew/opt/fnm/bin"
+if [ -d "$FNM_PATH" ]; then
+  eval "`fnm env`"
+fi
+
 # gpg for signing git commits
 export GPG_TTY=$(tty)
 
-alias svenv="source .venv/bin/activate"
+alias ve="source .venv/bin/activate"
 alias .git="git --git-dir=$HOME/.dotfilesgit --work-tree=$HOME"
-
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add yarn, go, and llvm to the path
 export PATH="~/.yarn/bin:~/go/bin:/opt/homebrew/opt/llvm/bin:$PATH"
