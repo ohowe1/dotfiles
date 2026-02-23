@@ -84,8 +84,14 @@ export GPG_TTY=$(tty)
 alias ve="source .venv/bin/activate"
 alias .git="git --git-dir=$HOME/.dotfilesgit --work-tree=$HOME"
 
+# copy a file to the clipboard
+pbfcopy(){ osascript -e{'on run{a}','set the clipboard to posix file a',end} "$(readlink -f -- "$1")";}
+
+
 # add yarn, go, and llvm to the path
 export PATH="~/.yarn/bin:~/go/bin:/opt/homebrew/opt/llvm/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval "$(zoxide init zsh)"
 
